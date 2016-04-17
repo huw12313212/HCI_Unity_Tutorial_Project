@@ -1,14 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class HowieController : MonoBehaviour 
 {
+
 	public Transform myTransform;
 	public Rigidbody myRigibody;
 	public float speed = 10;
 	public float jumpSpeed = 10;
 
 	public GameObject boomPrefab;
+
+
+	public void MoveTo(float x,float z)
+	{
+		Vector3 originPos = this.transform.position;
+		originPos.x = x;
+		originPos.z = z;
+
+		this.transform.DOMove (originPos,0.5f);
+	}
+
+
 
 	public void Boom()
 	{
@@ -20,7 +34,7 @@ public class HowieController : MonoBehaviour
 
 	void OnCollisionEnter(Collision collision) 
 	{
-		Boom ();
+		//Boom ();
 		onGround = true;
 	}
 
